@@ -3,7 +3,10 @@ import React, { Component } from "react";
 export class MovieInfoItem extends Component {
   render() {
 
-    //TODO implement an infocard for click through (ie plot, year, release, actors, ratings)
+    //TODO implement an infocard for click through 
+    //TODO list ratings
+    //TODO list TV rating and runtime
+    //TODO handle shows vs movies
     return (
       <div>
         <h2>
@@ -12,7 +15,7 @@ export class MovieInfoItem extends Component {
         <h3>
           {this.props.info.Runtime} ({this.props.info.Rated})
         </h3>
-
+        
          {/* <h4>{ this.props.active ? this.props.info.Ratings.map(
             (rating) => rating.Source + ' ' + rating.Value) : ''}
         </h4>  */}

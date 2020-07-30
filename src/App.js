@@ -15,6 +15,14 @@ class App extends Component {
     infoCardActive:false
   };
 
+  //TODO: 
+  //CSS: hide/unhide infocard and movielist
+  //CSS: style movie display
+  //CSS: style movie card
+  //CSS: Style main page
+  //Add routing (about page)
+  
+
   //api call for movies/shows
   searchMovies = (title,type) => {
     axios
@@ -33,6 +41,7 @@ class App extends Component {
       });
   };
 
+  //retuns detailed info about a movie or show
   getInfoCard = (imdbID) => {
     this.setState({infoCardActive: true})
      axios
@@ -42,14 +51,6 @@ class App extends Component {
          console.log(res.data)
         })
   }
-
-  //TODO add click through from movie image
-
-  //incase i need a ref, this runs automaticly
-  // componentDidMount(){
-  //   axios.get('http://www.omdbapi.com/?s=star wars&type=series&apikey=d5ed3baa')
-  //    .then(res => this.setState({movies: res.data.Search}))
-  // }
 
   render() {
     return (

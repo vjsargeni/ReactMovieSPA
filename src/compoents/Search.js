@@ -16,12 +16,7 @@ class Search extends Component {
 
     render(){ 
         
-        return(
-            /*TODO pass prop up to App.js for search (see 42min)
-                    add dropbox for SHow/movie
-                    add year box
-            */
-            
+        return(           
             <div>
                 <form onSubmit={this.onSubmit}>
                 <input
