@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 export class MovieItem extends Component {
     render() {
+        //TODO pass a click back to App.js for more info
         return (
             <div>
                 <h4>{this.props.movies.Title}</h4>
