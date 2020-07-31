@@ -11,7 +11,7 @@ export class MovieItem extends Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container className="displayListItem">
           <Col>
             <h4>{this.props.movies.Title}</h4>
             <img

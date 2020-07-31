@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+
 import Col from "react-bootstrap/Col";
 
 export class MovieInfoItem extends Component {
@@ -19,8 +19,9 @@ export class MovieInfoItem extends Component {
     return (
       <div>
         <Container>
+          <Col>
           <button onClick={this.goBack}>Go back</button>
-          <Row>
+          </Col>
             <Col>
               <img
                 src={this.props.info.Poster}
@@ -40,7 +41,7 @@ export class MovieInfoItem extends Component {
               </h4>
               
             </Col>
-          </Row>
+
         </Container>
       </div>
     );
