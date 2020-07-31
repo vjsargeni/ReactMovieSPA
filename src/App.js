@@ -1,13 +1,13 @@
+import { BrowserRouter, Route } from "react-router-dom";
 import React, { Component } from "react";
 import Movies from "./components/Media";
 import Search from "./components/Search";
 import MediaInfoItem from "./components/MediaInfoItem";
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from "react-bootstrap/Container";
+import "bootstrap/dist/css/bootstrap.min.css";
+import About from './components/pages/About';
+import Header from './components/Header';
 
-
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
@@ -22,7 +22,6 @@ class App extends Component {
   //CSS: style movie display
   //CSS: style movie card
   //CSS: Style main page
-  //Add routing (about page)
 
   //api call for movies/shows
   searchMovies = (title, type) => {
@@ -54,32 +53,48 @@ class App extends Component {
   };
 
   backToMovieList = (active) => {
-    this.setState({infoCardActive: false})
-  }
+    this.setState({ infoCardActive: false });
+  };
 
   render() {
     return (
-      <div className="App">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>React OMDB Search Tool!</h1>
-        <Search movies={this.state.movies} searchTitle={this.searchMovies} />
-        <span>{this.state.errMsg}</span>
-        <div className='movieSpace'>
-          {!this.state.infoCardActive && (
-            <Movies movies={this.state.movies} imdbID={this.getInfoCard} />
-          )}
+      <BrowserRouter>
+        <div className="App">
+          <Header/>
+          <Route
+            exact path="/"
+            render={(props) => (
+              <React.Fragment>
+                <Search
+                  movies={this.state.movies}
+                  searchTitle={this.searchMovies}
+                />
+                <span>{this.state.errMsg}</span>
+                <div className="movieSpace">
+                  {!this.state.infoCardActive && (
+                    <Movies
+                      movies={this.state.movies}
+                      imdbID={this.getInfoCard}
+                    />
+                  )}
+                </div>
+
+                <div className="movieSpace">
+                  {this.state.infoCardActive && (
+                    <MediaInfoItem
+                      info={this.state.infocard}
+                      active={this.backToMovieList}
+                    />
+                  )}
+                </div>
+              </React.Fragment>
+            )}
+          />
+          <Route path ='/about' component={About}
+          />
+
         </div>
-        <Container>
-          <div className='movieSpace'>
-          {this.state.infoCardActive && (
-            <MediaInfoItem
-              info={this.state.infocard}
-              active={this.backToMovieList}
-            />)}
-          </div>
-        </Container>
-          
-      </div>
+      </BrowserRouter>
     );
   }
 }
