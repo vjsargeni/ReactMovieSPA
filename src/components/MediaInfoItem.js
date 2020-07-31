@@ -9,6 +9,8 @@ export class MovieInfoItem extends Component {
     this.props.active()
   }
 
+
+
   render() {
     //TODO implement an infocard for click through
     //TODO list ratings
@@ -33,12 +35,12 @@ export class MovieInfoItem extends Component {
                 {this.props.info.Runtime} ({this.props.info.Rated})
               </h3>
               <p>{this.props.info.Plot}</p>
+              <h4>
+               IMDB Rating: {this.props.info.imdbRating}
+              </h4>
+              
             </Col>
           </Row>
-
-          {/* <h4>{ this.props.active ? this.props.info.Ratings.map(
-            (rating) => rating.Source + ' ' + rating.Value) : ''}
-        </h4>  */}
         </Container>
       </div>
     );

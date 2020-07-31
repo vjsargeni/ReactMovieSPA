@@ -4,6 +4,8 @@ import Search from "./components/Search";
 import MediaInfoItem from "./components/MediaInfoItem";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from "react-bootstrap/Container";
+
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -47,7 +49,7 @@ class App extends Component {
       .get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=d5ed3baa`)
       .then((res) => {
         this.setState({ infocard: res.data });
-        console.log(res.data);
+        console.log(res.data); //todo remove later
       });
   };
 
@@ -62,20 +64,21 @@ class App extends Component {
         <h1>React OMDB Search Tool!</h1>
         <Search movies={this.state.movies} searchTitle={this.searchMovies} />
         <span>{this.state.errMsg}</span>
-        <div>
+        <div className='movieSpace'>
           {!this.state.infoCardActive && (
             <Movies movies={this.state.movies} imdbID={this.getInfoCard} />
           )}
         </div>
-        <div>
+        <Container>
+          <div className='movieSpace'>
           {this.state.infoCardActive && (
             <MediaInfoItem
               info={this.state.infocard}
               active={this.backToMovieList}
-
-            />
-          )}
-        </div>
+            />)}
+          </div>
+        </Container>
+          
       </div>
     );
   }
