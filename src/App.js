@@ -18,10 +18,7 @@ class App extends Component {
     infoCardActive: false,
   };
 
-  //TODO:
-  //CSS: style movie display
-  //CSS: style movie card
-  //CSS: Style main page
+  //TODO: work on CSS, add mobile configs?
 
   //api call for movies/shows
   searchMovies = (title, type) => {
@@ -48,7 +45,6 @@ class App extends Component {
       .get(`https://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=d5ed3baa`)
       .then((res) => {
         this.setState({ infocard: res.data });
-        console.log(res.data); //todo remove later
       });
   };
 
