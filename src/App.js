@@ -25,6 +25,7 @@ class App extends Component {
 
   //api call for movies/shows
   searchMovies = (title,type) => {
+    this.setState({infoCardActive: true})
     axios
       .get(`http://www.omdbapi.com/?s=${title}&type=${type}&apikey=d5ed3baa`)
       .then((res) => {
@@ -60,10 +61,10 @@ class App extends Component {
         <Search movies={this.state.movies} searchTitle={this.searchMovies} />
         <span>{this.state.errMsg}</span>
         <div>
-          <Movies movies={this.state.movies} imdbID = {this.getInfoCard} />
+          {!this.state.infoCardActive && <Movies movies={this.state.movies} imdbID = {this.getInfoCard} />}
         </div>
         <div>
-          <MediaInfoItem info={this.state.infocard} active={this.state.infoCardActive}/>
+          {this.state.infoCardActive && <MediaInfoItem info={this.state.infocard} active={this.state.infoCardActive}/>}
         </div>
         
       </div>
