@@ -27,7 +27,7 @@ class App extends Component {
   searchMovies = (title, type) => {
     this.setState({ infoCardActive: false });
     axios
-      .get(`http://www.omdbapi.com/?s=${title}&type=${type}&apikey=d5ed3baa`)
+      .get(`https://www.omdbapi.com/?s=${title}&type=${type}&apikey=d5ed3baa`)
       .then((res) => {
         if (res.data.Response === "True") {
           this.setState({ movies: res.data.Search });
@@ -45,7 +45,7 @@ class App extends Component {
   getInfoCard = (imdbID) => {
     this.setState({ infoCardActive: true });
     axios
-      .get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=d5ed3baa`)
+      .get(`https://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=d5ed3baa`)
       .then((res) => {
         this.setState({ infocard: res.data });
         console.log(res.data); //todo remove later
